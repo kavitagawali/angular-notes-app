@@ -1,0 +1,49 @@
+$razzmatazz: #da0158;
+$blue: rgb(102, 217, 232);
+$orange:#FF6347;
+
+$dark-red: #bc0000;
+.notes {
+  .logout-button {
+    color: $orange;
+    border-color:$orange;
+    font-size: 20px;
+  }
+  .example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  .save_btn {
+    float: right;
+    margin-right: -2px;
+  }
+  .notesList {
+    height: 680px;
+    overflow: auto;
+    border-right: 1px dotted;
+  }
+  .listClass {
+    height: 110px;
+    overflow: auto;
+  }
+  .remove {
+    float: right;
+    font-size: 19px;
+  }
+  .notes-color1 {
+    background-color: rgb(116 192 252 / 43%);
+  }
+  .notes-color2 {
+    background-color: rgb(151 233 208 / 53%);
+  }
+
+  .notes-border {
+    border-bottom: 1px dotted;
+    padding-bottom: 7px;
+  }
+}

@@ -1,0 +1,61 @@
+<div class="notes">
+  <div class="row mt-5 ml-5 mr-5 notes-border">
+    <div class="d-flex flex-row">
+      <h4>Notes</h4>
+    </div>
+    <div class="ml-auto">
+      <div class="d-flex flex-row">
+        <div>
+          <button class="btn logout-button" (click)="logout()">Logout</button>
+        </div>
+      </div>
+    </div>  
+  </div>
+  <div class="row m-3">
+    <div class="col-4 notesList">
+      <mat-list *ngFor="let item of notesList; let i = index " class="listClass">
+        <mat-card [ngClass]=" i%2==1 ? 'notes-color1' : 'notes-color2'">
+          <mat-card-title (click) = "editNote(item, i)" >{{item.title}}</mat-card-title>
+          <mat-card-content>
+            <span class="fa fa-times-circle remove" (click)="deleteNote(i)"></span>
+            <span (click) = "editNote(item, i)" > {{item.description}} </span>     
+          </mat-card-content>          
+        </mat-card>
+      </mat-list>
+    </div>
+    <div class="col-8" *ngIf="notesForm">
+      <form [formGroup]="notesForm">
+          <div>
+            Title: <span class="marker-color">*</span>       
+          </div>
+          <div class="pt-2">
+            <input type="text" class="form-control" formControlName="title">
+            <div *ngIf="getFormGroupControls('notesForm', 'title')?.invalid && (getFormGroupControls('notesForm', 'title')?.dirty || getFormGroupControls('notesForm', 'title')?.touched)" class="e-error">
+              <div class="e-error" *ngIf="getFormGroupControls('notesForm', 'title')?.errors?.required">
+                Title is required.
+              </div>
+            </div>
+            
+          </div>
+        
+          <div class="pt-3">
+            Body: <span class="marker-color">*</span> 
+          </div>
+          <div class="pt-2">
+            <textarea class="form-control" rows="10"
+            formControlName="description"></textarea>
+            <div *ngIf="getFormGroupControls('notesForm', 'description')?.invalid && (getFormGroupControls('notesForm', 'description')?.dirty || getFormGroupControls('notesForm', 'description')?.touched)" class="e-error">
+              <div class="e-error" *ngIf="getFormGroupControls('notesForm', 'description')?.errors?.required">
+                Body is required.
+              </div>
+            </div>
+          </div>
+      </form>
+      <div class="row pt-3 save_btn">
+        <button type="submit" mat-raised-button class="btn btn-primary"
+        (click)="onSubmit()">
+          Save</button>
+      </div>     
+    </div>    
+  </div>
+</div>
